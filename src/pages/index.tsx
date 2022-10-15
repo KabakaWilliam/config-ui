@@ -1,10 +1,14 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import GlobeIcon from "../components/GlobeIcon";
+import { WindowContainer } from "../components/WindowContainer";
 import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
   const hello = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
+  const topBorderHeight = "h-[58px]";
+  const windowHeight = "h-[800px]";
+  const windowWidth = "w-[80vw]";
 
   return (
     <>
@@ -17,26 +21,23 @@ const Home: NextPage = () => {
       <main className="p-5">
         <div className="flex h-[872px] w-[98vw] items-center justify-center border-[8px] border-black bg-[url('/ref.png')] bg-cover">
           {/* main contianer */}
-          <div className="relative z-10 ml-10 h-[800px] w-[80vw] bg-black">
-            <div className="absolute right-5 bottom-3 z-30 h-[800px] w-[80vw] border-[4px]  border-black bg-white">
-              <div className="flex h-[58px] w-[100%]  bg-black text-[24px] uppercase text-white">
-                <div className="flex h-[100%] w-[10%] items-center justify-start  pl-2">
-                  WILL.OS
-                </div>
-                <div className="flex h-[100%] w-[60%] items-center justify-start  ">
-                  config 2022 *** Oct 15 *** 🥵 30 degrees
-                </div>
-                <div className="flex h-[100%] w-[30%] text-[16px]  ">
-                  <div className="flex h-[100%] w-[50%] items-center justify-end pr-2 ">
-                    10:00pm(GMT+2)
-                  </div>
-                  <div className="flex h-[100%]  w-[50%] items-center justify-items-start border-l-2 pl-5">
-                    <GlobeIcon /> <div className="pl-5" /> DOH
-                  </div>
-                </div>
+          <WindowContainer
+            topBorderHeight={topBorderHeight}
+            windowHeight={windowHeight}
+            windowWidth={windowWidth}
+          >
+            <div className="h-[734px] w-full bg-[url('/bTriangles.jpeg')] bg-cover">
+              <div className="absolute top-[100px]">
+                <WindowContainer
+                  topBorderHeight="h-[30px]"
+                  windowHeight="h-[400px]"
+                  windowWidth="w-[700px]"
+                >
+                  <div className="graphPaper h-[362px] w-full"></div>
+                </WindowContainer>
               </div>
             </div>
-          </div>
+          </WindowContainer>
         </div>
       </main>
     </>
