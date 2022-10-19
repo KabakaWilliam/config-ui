@@ -1,37 +1,49 @@
+import { useEffect, useState } from "react";
 import GlobeIcon from "./GlobeIcon";
 
 export const WindowContainer: React.FC<{
   topBorderHeight: string;
   windowHeight: string;
   windowWidth: string;
+  mainContainer?: boolean;
   children: any;
 }> = (props) => {
   // const topBorderHeight = "h-[58px]";
   // const windowHeight = "h-[800px]";
   // const windowWidth = "w-[80vw]";
 
-  const now = new Date();
-  const date = now.getMonth();
-  const day = now.getDate();
-  const month = [
-    "JAN",
-    "FEB",
-    "MAR",
-    "APR",
-    "MAY",
-    "JUN",
-    "JUL",
-    "AUG",
-    "SEP",
-    "OCT",
-    "NOV",
-    "DEC",
-  ];
-  const time = now.toLocaleTimeString("en-US", {
-    // en-US can be set to 'default' to use user's browser settings
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  const [newDate, setNewDate] = useState<Date>(new Date());
+
+  // const now = new Date();
+  // const date = now.getMonth();
+  // const day = now.getDate();
+  // const month = [
+  //   "JAN",
+  //   "FEB",
+  //   "MAR",
+  //   "APR",
+  //   "MAY",
+  //   "JUN",
+  //   "JUL",
+  //   "AUG",
+  //   "SEP",
+  //   "OCT",
+  //   "NOV",
+  //   "DEC",
+  // ];
+  // const time = now.toLocaleTimeString("en-US", {
+  //   // en-US can be set to 'default' to use user's browser settings
+  //   hour: "2-digit",
+  //   minute: "2-digit",
+  // });
+  const refreshClock = () => {
+    setNewDate(new Date());
+  };
+
+  useEffect(() => {
+    const timerID = setInterval(refreshClock, 1000);
+    return () => clearInterval(timerID);
+  }, []);
 
   return (
     <div
@@ -41,20 +53,25 @@ export const WindowContainer: React.FC<{
         <div
           className={`flex  w-[100%] ${props.topBorderHeight}  bg-black text-[20px] uppercase text-white`}
         >
-          <div className="flex h-[100%] w-[10%] items-center justify-start  pl-2">
-            WILL.OS
-          </div>
-          <div className="flex h-[100%] w-[60%] items-center justify-start  ">
-            config 2022 *** {month[date]} {day} *** 🥵 30 degrees
-          </div>
-          <div className="flex h-[100%] w-[30%] text-[16px]  ">
-            <div className="flex h-[100%] w-[50%] items-center justify-end pr-2 ">
-              {time}(GMT+2)
-            </div>
-            <div className="flex h-[100%]  w-[50%] items-center justify-items-start border-l-2 pl-5">
-              <GlobeIcon /> <div className="pl-5" /> DOH
-            </div>
-          </div>
+          {/* conditions for main container widget */}
+          {props.mainContainer && (
+            <>
+              <div className="flex h-[100%] w-[10%] items-center justify-start  pl-2">
+                WILL.OS
+              </div>
+              <div className="flex h-[100%] w-[60%] items-center justify-start  ">
+                config 2022 *** *** 🥵 30 degrees
+              </div>
+              <div className="flex h-[100%] w-[30%] text-[16px]  ">
+                <div className="flex h-[100%] w-[50%] items-center justify-end pr-2 ">
+                  {newDate.toLocaleTimeString()}(GMT+2)
+                </div>
+                <div className="flex h-[100%]  w-[50%] items-center justify-items-start border-l-2 pl-5">
+                  <GlobeIcon /> <div className="pl-5" /> DOH
+                </div>
+              </div>
+            </>
+          )}
         </div>
         {props.children}
       </div>
