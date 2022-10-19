@@ -95,7 +95,7 @@ const ProfileContainer = () => {
               {/* user intro widget */}
               <div className="h-[180px] w-[100%] select-none ">
                 <div className="font-sans text-[40px] font-bold">
-                  William Gitta{" "}
+                  HE William Gitta{" "}
                   <span className="font-mono text-lg font-thin">HE/HIM</span>
                 </div>
                 <div className="pb-2 font-sans font-semibold">
