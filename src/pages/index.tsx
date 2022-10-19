@@ -76,6 +76,7 @@ const ProfileContainer = () => {
         topBorderHeight="h-[30px]"
         windowHeight="h-[400px]"
         windowWidth="w-[700px]"
+        WindowOptions={true}
       >
         <div className="graphPaper h-[362px] w-full">
           <div className="flex h-[70%] w-[100%] border-2 border-b-black bg-white">
