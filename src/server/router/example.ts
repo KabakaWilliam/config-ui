@@ -22,12 +22,12 @@ export const exampleRouter = createRouter()
     async resolve({ input }) {
       const yahoo = new YahooStockAPI();
       const startDate = new Date("10/17/2022");
-      const endDate = new Date("10/19/2022");
+      const endDate = new Date(); //get current date
 
       const rawData = await yahoo.getHistoricalPrices({
         startDate,
         endDate,
-        symbol: "AAPL",
+        symbol: input.stock,
         frequency: "1d",
       });
 

@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import GlobeIcon from "../components/GlobeIcon";
 import {
+  DriveIcon,
   GitHubIcon,
   LinkedinIcon,
   TwitterIcon,
@@ -34,6 +35,12 @@ const Home: NextPage = () => {
           >
             <div className="h-[734px] w-full bg-[url('/bTriangles.jpeg')] bg-cover">
               <ProfileContainer />
+            </div>
+            <div className="absolute top-[100px] left-[900px] underline-offset-8 hover:cursor-pointer hover:text-[#918e8e] hover:underline">
+              <DriveIcon />
+              <div className=" text-center font-bold uppercase text-white">
+                Projects
+              </div>
             </div>
           </WindowContainer>
         </div>
@@ -95,7 +102,7 @@ const ProfileContainer = () => {
               {/* user intro widget */}
               <div className="h-[180px] w-[100%] select-none ">
                 <div className="font-sans text-[40px] font-bold">
-                  HE William Gitta{" "}
+                  William Gitta
                   <span className="font-mono text-lg font-thin">HE/HIM</span>
                 </div>
                 <div className="pb-2 font-sans font-semibold">
