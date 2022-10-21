@@ -1,6 +1,6 @@
 import Fuse from "fuse.js";
 import Head from "next/head";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { trpc } from "../utils/trpc";
 import tickers from "../server/stockData/tickers.json";
 const StockTracker = () => {
@@ -96,7 +96,7 @@ export default StockTracker;
 
 interface resultProps {
   resultInfo: StaticTickerData;
-  setStockTicker: Function;
+  setStockTicker: React.Dispatch<SetStateAction<string>>;
 }
 
 const SearchResWidget = ({ resultInfo, setStockTicker }: resultProps) => {
