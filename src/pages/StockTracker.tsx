@@ -22,6 +22,7 @@ const StockTracker = () => {
   });
 
   const searchHandler = (e: any) => {
+    e.preventDefault();
     const query = e.target.value.toUpperCase();
 
     const results = fuse.search(query);
