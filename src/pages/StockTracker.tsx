@@ -72,7 +72,7 @@ const StockTracker = () => {
           <input
             className="h-[100px]  w-[100vw] rounded-lg pl-2  uppercase md:w-[50vw]"
             type="search"
-            value={stockTicker} //bug: when deleting value, you are unable to add any new value
+            //value={stockTicker} //bug: when deleting value, you are unable to add any new value
             placeholder="Search for a stock ticker..."
             onChange={(e) => searchHandler(e)}
           />
